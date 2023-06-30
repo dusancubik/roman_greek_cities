@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roman Cities</title>
+
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script> 
+    <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+     <link href="./public/main.css" rel="stylesheet">
+     <link rel="stylesheet/less" type="text/css" href="double_range.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less" ></script>
+    <link rel="stylesheet" href="./public/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="./public/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+    <script src="./public/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster-src.js" charset="UTF-8"></script>
+    <script type="module" src="./public/Leaflet.markercluster-1.4.1/src/index.js" charset="UTF-8"></script>
+    <script src="./public/leaflet-geometryutil/src/leaflet.geometryutil.js"></script>
+    <script src="./public/leaflet-arrowheads/src/leaflet-arrowheads.js"></script>
+</head>
+<body>
+  <div id="city_legend" >
+    <p id="city_legend_text"></p>
+  </div>
+  </div>
+  <div id="monument_legend" >
+    <div id="monument_wrapper">
+      <div id="monument_block">
+        <p id="monument_name">AncientName</p>
+        <img id="monument_photo" src="" width="160" height="auto">
+      </div>
+
+      <div id="monument_block">
+          <p id="monument_text">TEXTEXTETEXTEXXTE</p>
+      </div>
+  </div>
+  </div>
+<div id="card" >
+  <div id="card_wrapper">
+    <div id="card_block">
+        <p id="card_ancient_name">AncientName</p>
+        <p id="card_year">Rok</p>
+    </div>
+
+   <div id="card_block">
+        <p id="card_modern_name">ModernName</p>
+        <div id="card_flag_div"><img id="card_flag" width="30" height="auto"></div>
+    </div>
+    <div id="card_block"><div id="card_monuments_div"></div></div>
+  </div>
+</div>
+<div id="wrapper">
+  <div id="map_wrapper"><div id="map"></div></div>
+  <div id="legend">
+    <div id="info">
+      <p><span id="rome_dot"></span>Capital of the Empire<sup id="rome_leg"><b>?</b></sup></p>
+      <p><span id="metro_dot"></span> Metropolis capital<sup id="metro_leg"><b>?</b></sup></p>
+      <p><span id="prov_dot"></span> Provincial capital<sup id="prov_leg"><b>?</b></sup></p>
+      <p><span id="conve_dot"></span> Conventus capital<sup id="conve_leg"><b>?</b></sup></p>
+      <p><span id="muni_dot"></span> Municipium<sup id="muni_leg"><b>?</b></sup></p>
+      <p><span id="col_dot"></span> Colonia<sup id="col_leg"><b>?</b></sup></p>
+      <p><span id="syria_dot"></span> City of the Syrian Decapolis<sup id="syria_leg"><b>?</b></sup></p>
+      <p><span id="greek_dot"></span> Metropolis capital (Greek)<sup id="greek_leg"><b>?</b></sup></p>
+      <p><span id="undef_dot"></span> Undefined<sup id="undef_leg"><b>?</b></sup></p>
+    </div>
+    <div id="info_monuments">
+      <h1>Monuments</h1>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/agora.png"></img></span>Agora<sup id="agora"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/amphitheatre.png"></img></span>Amphitheatre/Stadium<sup id="stadium"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/aqueduct.png"></img></span>Aqueduct<sup id="aqua"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/arch.png"></img></span>Arch<sup id="arch"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/baths.png"></img></span>Baths<sup id="bath"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/fountain.png"></img></span>Fountain<sup id="fountain"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/gym.png"></img></span>Gymnasium/Palaestra<sup id="gym"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/hippodrome.png"></img></span>Hippodrome<sup id="hippodrome"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/library.png"></img></span>Library<sup id="lib"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/music.png"></img></span>Odeum<sup id="music"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/law.png"></img></span>Prytareum/Dikasterion<sup id="law"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/temple.png"></img></span>Temple<sup id="temple"><b>?</b></sup></p>
+      <p><span class="legImgSpan"><img class="legImg" src="public/imgs/icons/monuments/walls.png"></img></span>Walls/Fort<sup id="walls"><b>?</b></sup></p>
+    </div>
+  </div>
+</div>
+<div id="slider-container">
+    <svg id="slider-svg"></svg>
+    <input type="range" id="myRange" min="2000" max="2020" value="2008" step="1" onchange="lowerChanged(this.value)">
+
+  </div>
+  
+  <div id="year-container">
+    <div id="animation">
+      <img src="public/imgs/yearCard/1.png" />
+      <img src="public/imgs/yearCard/2.png" />
+      <img src="public/imgs/yearCard/3.png" />
+      <img src="public/imgs/yearCard/4.png" />
+      <img src="public/imgs/yearCard/5.png" />
+      
+  </div>
+  <div id="event-text-wrapper">
+    <div id="event-text-top">
+      <p id="event-name">Test</p>
+      <p id="event-year">Test2</p>
+    </div>
+    <div id="event-text-body">
+      <!-- Word Limit: 116-->
+      <p id="event-text">TextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExtTextTextTExt</p>
+    </div>
+
+  </div>
+
+  </div>
+</body>
+<script type="text/javascript" src="public/legendControl.js"></script>
+<script type="text/javascript" src="public/sliderEventControl.js"></script>
+<script type="text/javascript" src="public/mapControl.js"></script>
+<script type="text/javascript" src="public/cardControl.js"></script>
+<script type="text/javascript" src="public/app.js"></script>
+<script src="http://maps.stamen.com/js/tile.stamen.js"></script>
+</html>

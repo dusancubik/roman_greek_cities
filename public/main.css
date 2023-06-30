@@ -1,0 +1,364 @@
+#wrapper{
+  margin:0;
+  height: 800px;
+}
+#map_wrapper { 
+    /*height: 860px;*/ 
+    display:inline-block;
+    width:80%;
+    overflow:hidden;
+    z-index: 8; 
+    height: 100%;
+    margin:0;
+}
+#map{
+  z-index: 8; 
+  height: 100%;
+  width:100%;
+}
+#legend{
+  position: relative;
+  background-image: url("/public/imgs/panel2.png");
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+  float:right;
+  width:20%;
+  overflow:hidden;
+  height: 100%; 
+  
+}
+#info p{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+@font-face {
+  font-family: "CinzelFont";
+  src: url('cinzel.regular.ttf') format("truetype");
+}
+
+.citiIconDiv{
+    text-align: center
+}
+* {
+  font-family: "CinzelFont"
+}
+#card {
+    
+    margin-top: 50px;
+    /*background-color: #f5f3e8;
+    outline-color: #497174;*/
+    width: 460px;
+    height: 280px;
+    z-index: 9;
+    /*border-radius: 5px;*/
+    position: absolute;
+    /*outline-style: solid;
+    outline-width: 2px;*/
+    background-image: url("/public/imgs/card.png");
+    -webkit-filter: drop-shadow(5px 5px 5px #222222);
+    filter: drop-shadow(5px 5px 5px #222222);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: bold;
+    display:none;
+    opacity: 0;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.6);*/
+}
+
+#card_monuments_div {
+    width: 100%;
+    height: 30px;
+    padding-top: 10px;
+}
+#card_wrapper {
+  position: absolute;
+  top: 44px;
+  left: 50px;
+}
+#card_block {
+    width: 354px;
+    height: 54px;
+    border-bottom: 1px solid black;
+    overflow: hidden;
+}
+#card_modern_name{
+    width: 160px;
+    float: left;
+}
+#card_ancient_name{
+  font-size: 24px;
+  width: 160px;
+  float: left;
+}
+#card_year{
+    width: 60px;
+    float: right;
+    text-align: right;
+}
+#card_flag_div{
+    /*position: absolute;*/
+    float: right;
+    /*top:0px;
+    right:5px;*/
+}
+
+#slider-container {
+    margin-left: 20px;
+    position: relative;
+    width: 1300px;
+    height: 100px;
+  }
+  
+  #slider-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .dot {
+    fill: red;
+    transition: fill 0.2s;
+  }
+  
+  .dot.active {
+    fill: blue;
+  }
+  
+  .dot:hover {
+    fill: green;
+  }
+  
+#myRange{
+  width: 100%;
+}
+#year-container {
+    /*background-color: #D9B26F;*/
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 480px;
+    height: 240px;
+    z-index: 99;
+    color: white;
+    display: none;
+    border-radius: 2px;
+    padding:2px;
+}
+
+#event-text-wrapper{
+  position: absolute;
+  width: 420px;
+  height: 200px;
+  top: 40px;
+  left: 100px;
+}
+#event-text-top{
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 32px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+#event-name{
+  font-size:17px;
+  width: 180px;
+  float:left;
+  margin-top:3px;
+  margin-bottom:3px;
+  color:black;
+  font-weight: bold;
+}
+#event-year{
+  width: 60px;
+  float: right;
+  text-align: right;
+  margin-top:3px;
+  margin-bottom:3px;
+  color:black;
+  font-weight: bold;
+}
+.arrow_note{
+  background-color: #D9B26F;
+  /*outline-color: #f92525;*/
+  border: 1px solid black;
+  opacity: 0.8;
+  width: 180px;
+  height: 26px;
+  z-index: 100;
+  position: relative;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.arrow_note p{
+  flex: 0 0 180px;
+}
+
+
+#event-info{
+  width: 100%;
+  height: 160px;
+  word-wrap: break-word;
+  color:#211a23;
+}
+#event-text{
+  font-size: 12px;
+  margin-top:5px;
+  margin-bottom:5px;
+  word-wrap: break-word;
+  color:#211a23;
+  font-weight: bold;
+}
+#event-text-body{
+  top: 100px;
+  left: 0;
+  width: 280px;
+  height: 124px;
+  /*border: 1px solid black;*/
+  overflow: hidden;
+}
+#animation{
+  width: 100%;
+  height: 100%;
+}
+#animation img {
+  -webkit-filter: drop-shadow(5px 5px 5px #222222);
+    filter: drop-shadow(5px 5px 5px #222222);
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+#animation img:first-child {
+  display: block;
+}
+.svg_city_name {
+  font: bold 12px "CinzelFont";
+  fill: green;
+  z-index : 10;
+}
+.heavy {
+  font: bold 12px "CinzelFont";
+  fill: green;
+}
+#info{
+  position: absolute;
+  top:90px;
+  left: 50px;
+}
+#info_monuments{
+  position: absolute;
+  top:300px;
+  left: 50px;
+}
+#info h1{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#info span{
+  height: 10px;
+  width: 10px;
+  /*background-color: rgb(255, 0, 0);*/
+  border-radius: 50%;
+  display: inline-block;
+}
+.legImgSpan{
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+.legImg{
+  width: 100%;
+  height: 100%;
+}
+#info_monuments p{
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+#info_monuments h1{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+#monument_legend{
+  width: 460px;
+  height: 280px;
+  z-index: 9;
+  position: absolute;
+   background-image: url("/public/imgs/card.png");
+  -webkit-filter: drop-shadow(5px 5px 5px #222222);
+  filter: drop-shadow(5px 5px 5px #222222);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-weight: bold;
+  display:none;
+  opacity: 0;
+}
+#monument_wrapper {
+  position: absolute;
+  top: 44px;
+  left: 50px;
+}
+#monument_block:first-child {
+  width: 354px;
+  height: 104px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+#monument_name{
+  width: 120px;
+  float: left;
+  margin-top: 70px;
+  font-size:22px;
+  font-weight: bold;
+}
+#monument_text{
+  width: 340px;
+  float: left;
+  word-wrap: break-word;
+  font-size:16px;
+  margin-top:5px;
+}
+#monument_photo{
+  float:right
+}
+
+
+
+#city_legend {
+  background-color: #D9B26F;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 480px;
+  height: auto;
+  z-index: 99;
+  color: white;
+  display: none;
+  border-radius: 2px;
+  padding:2px;
+  border: 1px solid black;
+}
+#city_legend p{
+
+}
+
